@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package genproto;
+
+service EventService {
+    rpc Push(Event) returns (Event);
+    rpc Get(Empty) returns (Events);
+    rpc GetByTime(Time) returns (Events);
+}
+
+message Empty {}
+
+message Event {
+    string time = 1;
+    string event = 2;
+}
+
+message Events {
+    repeated Event events = 1;
+    int32 count = 2;
+}
+
+message Time {
+    string time = 1;
+}
