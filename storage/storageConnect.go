@@ -17,6 +17,9 @@ type SqlQuerysEvent interface {
 	Push(genproto.Event) (genproto.Event, error)
 	Get() ([]*genproto.Event, error)
 	GetByTime(genproto.Time) ([]*genproto.Event, error)
+	GetByID(genproto.Id) (genproto.Event, error)
+	UpdateEvent(genproto.Event) (genproto.Event, error)
+	DeleteEvent(genproto.Id) error
 }
 
 type ToDo interface {

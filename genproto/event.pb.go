@@ -55,9 +55,50 @@ func (m *Empty) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Empty proto.InternalMessageInfo
 
+type Id struct {
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Id) Reset()         { *m = Id{} }
+func (m *Id) String() string { return proto.CompactTextString(m) }
+func (*Id) ProtoMessage()    {}
+func (*Id) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2d17a9d3f0ddf27e, []int{1}
+}
+
+func (m *Id) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Id.Unmarshal(m, b)
+}
+func (m *Id) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Id.Marshal(b, m, deterministic)
+}
+func (m *Id) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Id.Merge(m, src)
+}
+func (m *Id) XXX_Size() int {
+	return xxx_messageInfo_Id.Size(m)
+}
+func (m *Id) XXX_DiscardUnknown() {
+	xxx_messageInfo_Id.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Id proto.InternalMessageInfo
+
+func (m *Id) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
 type Event struct {
-	Time                 string   `protobuf:"bytes,1,opt,name=time,proto3" json:"time,omitempty"`
-	Event                string   `protobuf:"bytes,2,opt,name=event,proto3" json:"event,omitempty"`
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Time                 string   `protobuf:"bytes,2,opt,name=time,proto3" json:"time,omitempty"`
+	Event                string   `protobuf:"bytes,3,opt,name=event,proto3" json:"event,omitempty"`
+	Status               bool     `protobuf:"varint,4,opt,name=status,proto3" json:"status,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -67,7 +108,7 @@ func (m *Event) Reset()         { *m = Event{} }
 func (m *Event) String() string { return proto.CompactTextString(m) }
 func (*Event) ProtoMessage()    {}
 func (*Event) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2d17a9d3f0ddf27e, []int{1}
+	return fileDescriptor_2d17a9d3f0ddf27e, []int{2}
 }
 
 func (m *Event) XXX_Unmarshal(b []byte) error {
@@ -88,6 +129,13 @@ func (m *Event) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Event proto.InternalMessageInfo
 
+func (m *Event) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
 func (m *Event) GetTime() string {
 	if m != nil {
 		return m.Time
@@ -102,6 +150,13 @@ func (m *Event) GetEvent() string {
 	return ""
 }
 
+func (m *Event) GetStatus() bool {
+	if m != nil {
+		return m.Status
+	}
+	return false
+}
+
 type Events struct {
 	Events               []*Event `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
 	Count                int32    `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
@@ -114,7 +169,7 @@ func (m *Events) Reset()         { *m = Events{} }
 func (m *Events) String() string { return proto.CompactTextString(m) }
 func (*Events) ProtoMessage()    {}
 func (*Events) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2d17a9d3f0ddf27e, []int{2}
+	return fileDescriptor_2d17a9d3f0ddf27e, []int{3}
 }
 
 func (m *Events) XXX_Unmarshal(b []byte) error {
@@ -160,7 +215,7 @@ func (m *Time) Reset()         { *m = Time{} }
 func (m *Time) String() string { return proto.CompactTextString(m) }
 func (*Time) ProtoMessage()    {}
 func (*Time) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2d17a9d3f0ddf27e, []int{3}
+	return fileDescriptor_2d17a9d3f0ddf27e, []int{4}
 }
 
 func (m *Time) XXX_Unmarshal(b []byte) error {
@@ -190,6 +245,7 @@ func (m *Time) GetTime() string {
 
 func init() {
 	proto.RegisterType((*Empty)(nil), "genproto.Empty")
+	proto.RegisterType((*Id)(nil), "genproto.Id")
 	proto.RegisterType((*Event)(nil), "genproto.Event")
 	proto.RegisterType((*Events)(nil), "genproto.Events")
 	proto.RegisterType((*Time)(nil), "genproto.Time")
@@ -198,20 +254,25 @@ func init() {
 func init() { proto.RegisterFile("event.proto", fileDescriptor_2d17a9d3f0ddf27e) }
 
 var fileDescriptor_2d17a9d3f0ddf27e = []byte{
-	// 207 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4e, 0x2d, 0x4b, 0xcd,
-	0x2b, 0xd1, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x48, 0x4f, 0xcd, 0x03, 0xb3, 0x94, 0xd8,
-	0xb9, 0x58, 0x5d, 0x73, 0x0b, 0x4a, 0x2a, 0x95, 0x0c, 0xb9, 0x58, 0x5d, 0x41, 0x2a, 0x84, 0x84,
-	0xb8, 0x58, 0x4a, 0x32, 0x73, 0x53, 0x25, 0x18, 0x15, 0x18, 0x35, 0x38, 0x83, 0xc0, 0x6c, 0x21,
-	0x11, 0x2e, 0x56, 0xb0, 0x76, 0x09, 0x26, 0xb0, 0x20, 0x84, 0xa3, 0xe4, 0xce, 0xc5, 0x06, 0xd6,
-	0x52, 0x2c, 0xa4, 0xce, 0xc5, 0x06, 0x16, 0x2a, 0x96, 0x60, 0x54, 0x60, 0xd6, 0xe0, 0x36, 0xe2,
-	0xd7, 0x83, 0x59, 0xa0, 0x07, 0x56, 0x11, 0x04, 0x95, 0x06, 0x19, 0x94, 0x9c, 0x5f, 0x0a, 0x35,
-	0x88, 0x35, 0x08, 0xc2, 0x51, 0x92, 0xe2, 0x62, 0x09, 0x01, 0x59, 0x83, 0xc5, 0x6a, 0xa3, 0x89,
-	0x8c, 0x5c, 0x3c, 0x60, 0x33, 0x82, 0x53, 0x8b, 0xca, 0x32, 0x93, 0x53, 0x85, 0x34, 0xb8, 0x58,
-	0x02, 0x4a, 0x8b, 0x33, 0x84, 0xd0, 0xed, 0x90, 0x42, 0x17, 0x10, 0xd2, 0xe0, 0x62, 0x76, 0x4f,
-	0x2d, 0x41, 0x51, 0x08, 0xf2, 0xaa, 0x94, 0x00, 0x9a, 0xc2, 0x62, 0x21, 0x5d, 0x2e, 0x4e, 0xf7,
-	0xd4, 0x12, 0xa7, 0x4a, 0xb0, 0x2b, 0xf8, 0x10, 0xd2, 0x20, 0x3e, 0xa6, 0xf2, 0x24, 0x36, 0x30,
-	0xcf, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0x23, 0x1e, 0x86, 0x62, 0x54, 0x01, 0x00, 0x00,
+	// 283 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x50, 0x4f, 0x4b, 0xfb, 0x40,
+	0x10, 0x25, 0x7f, 0xdb, 0x4e, 0x4a, 0x7f, 0x3f, 0x86, 0x22, 0x21, 0xa7, 0x90, 0x8b, 0x7b, 0xd0,
+	0x08, 0xf5, 0x1b, 0x48, 0x4b, 0xc8, 0x4d, 0xa2, 0x1e, 0x3c, 0xd6, 0xee, 0xa0, 0x01, 0x9b, 0x84,
+	0xee, 0xa6, 0xd0, 0xaf, 0xe2, 0xa7, 0x95, 0x9d, 0x34, 0x04, 0xa3, 0xe2, 0x6d, 0xde, 0xbc, 0x37,
+	0xef, 0xbd, 0x5d, 0x08, 0xe8, 0x48, 0x95, 0x4e, 0x9b, 0x43, 0xad, 0x6b, 0x9c, 0xbe, 0x52, 0xc5,
+	0x53, 0x32, 0x01, 0x6f, 0xb3, 0x6f, 0xf4, 0x29, 0x59, 0x82, 0x9d, 0x4b, 0x5c, 0x80, 0x5d, 0xca,
+	0xd0, 0x8a, 0x2d, 0x31, 0x2b, 0xec, 0x52, 0x26, 0xcf, 0xe0, 0x6d, 0xcc, 0xdd, 0x98, 0x40, 0x04,
+	0x57, 0x97, 0x7b, 0x0a, 0x6d, 0xde, 0xf0, 0x8c, 0x4b, 0xf0, 0x38, 0x24, 0x74, 0x78, 0xd9, 0x01,
+	0xbc, 0x00, 0x5f, 0xe9, 0xad, 0x6e, 0x55, 0xe8, 0xc6, 0x96, 0x98, 0x16, 0x67, 0x94, 0x64, 0xe0,
+	0xb3, 0xb5, 0xc2, 0x4b, 0xf0, 0x59, 0xaa, 0x42, 0x2b, 0x76, 0x44, 0xb0, 0xfa, 0x97, 0xf6, 0xf5,
+	0x52, 0x56, 0x14, 0x67, 0xda, 0x04, 0xec, 0xea, 0xb6, 0xd2, 0x9c, 0xea, 0x15, 0x1d, 0x48, 0x22,
+	0x70, 0x1f, 0x4d, 0x7c, 0x5f, 0xc9, 0x1a, 0x2a, 0xad, 0x3e, 0x6c, 0x98, 0xb3, 0xc7, 0x03, 0x1d,
+	0x8e, 0xe5, 0x8e, 0x50, 0x80, 0x7b, 0xdf, 0xaa, 0x37, 0x1c, 0x67, 0x44, 0xe3, 0x05, 0x0a, 0x70,
+	0x32, 0xd2, 0x5f, 0x84, 0xe6, 0xa3, 0xa2, 0xff, 0x23, 0xa1, 0xc2, 0x6b, 0x98, 0x65, 0xa4, 0xef,
+	0x4e, 0xdc, 0x62, 0x31, 0xd0, 0x06, 0xff, 0x20, 0x17, 0x30, 0x61, 0x79, 0xbe, 0xc6, 0xf9, 0x40,
+	0xe6, 0xf2, 0x7b, 0x85, 0x1b, 0x08, 0x9e, 0x1a, 0xb9, 0xd5, 0xd4, 0xc1, 0xbf, 0x3b, 0x5f, 0x41,
+	0xb0, 0xa6, 0x77, 0xea, 0x0f, 0x7e, 0xb7, 0x37, 0x2f, 0x79, 0xf1, 0x19, 0xdc, 0x7e, 0x06, 0x00,
+	0x00, 0xff, 0xff, 0xe2, 0xba, 0x41, 0x81, 0x1b, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -229,6 +290,9 @@ type EventServiceClient interface {
 	Push(ctx context.Context, in *Event, opts ...grpc.CallOption) (*Event, error)
 	Get(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Events, error)
 	GetByTime(ctx context.Context, in *Time, opts ...grpc.CallOption) (*Events, error)
+	GetByID(ctx context.Context, in *Id, opts ...grpc.CallOption) (*Event, error)
+	UpdateEvent(ctx context.Context, in *Event, opts ...grpc.CallOption) (*Event, error)
+	DeleteEvent(ctx context.Context, in *Id, opts ...grpc.CallOption) (*Empty, error)
 }
 
 type eventServiceClient struct {
@@ -266,11 +330,41 @@ func (c *eventServiceClient) GetByTime(ctx context.Context, in *Time, opts ...gr
 	return out, nil
 }
 
+func (c *eventServiceClient) GetByID(ctx context.Context, in *Id, opts ...grpc.CallOption) (*Event, error) {
+	out := new(Event)
+	err := c.cc.Invoke(ctx, "/genproto.EventService/GetByID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *eventServiceClient) UpdateEvent(ctx context.Context, in *Event, opts ...grpc.CallOption) (*Event, error) {
+	out := new(Event)
+	err := c.cc.Invoke(ctx, "/genproto.EventService/UpdateEvent", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *eventServiceClient) DeleteEvent(ctx context.Context, in *Id, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/genproto.EventService/DeleteEvent", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // EventServiceServer is the server API for EventService service.
 type EventServiceServer interface {
 	Push(context.Context, *Event) (*Event, error)
 	Get(context.Context, *Empty) (*Events, error)
 	GetByTime(context.Context, *Time) (*Events, error)
+	GetByID(context.Context, *Id) (*Event, error)
+	UpdateEvent(context.Context, *Event) (*Event, error)
+	DeleteEvent(context.Context, *Id) (*Empty, error)
 }
 
 // UnimplementedEventServiceServer can be embedded to have forward compatible implementations.
@@ -285,6 +379,15 @@ func (*UnimplementedEventServiceServer) Get(ctx context.Context, req *Empty) (*E
 }
 func (*UnimplementedEventServiceServer) GetByTime(ctx context.Context, req *Time) (*Events, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetByTime not implemented")
+}
+func (*UnimplementedEventServiceServer) GetByID(ctx context.Context, req *Id) (*Event, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetByID not implemented")
+}
+func (*UnimplementedEventServiceServer) UpdateEvent(ctx context.Context, req *Event) (*Event, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateEvent not implemented")
+}
+func (*UnimplementedEventServiceServer) DeleteEvent(ctx context.Context, req *Id) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteEvent not implemented")
 }
 
 func RegisterEventServiceServer(s *grpc.Server, srv EventServiceServer) {
@@ -345,6 +448,60 @@ func _EventService_GetByTime_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _EventService_GetByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Id)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EventServiceServer).GetByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/genproto.EventService/GetByID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EventServiceServer).GetByID(ctx, req.(*Id))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _EventService_UpdateEvent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Event)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EventServiceServer).UpdateEvent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/genproto.EventService/UpdateEvent",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EventServiceServer).UpdateEvent(ctx, req.(*Event))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _EventService_DeleteEvent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Id)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EventServiceServer).DeleteEvent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/genproto.EventService/DeleteEvent",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EventServiceServer).DeleteEvent(ctx, req.(*Id))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _EventService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "genproto.EventService",
 	HandlerType: (*EventServiceServer)(nil),
@@ -360,6 +517,18 @@ var _EventService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetByTime",
 			Handler:    _EventService_GetByTime_Handler,
+		},
+		{
+			MethodName: "GetByID",
+			Handler:    _EventService_GetByID_Handler,
+		},
+		{
+			MethodName: "UpdateEvent",
+			Handler:    _EventService_UpdateEvent_Handler,
+		},
+		{
+			MethodName: "DeleteEvent",
+			Handler:    _EventService_DeleteEvent_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
